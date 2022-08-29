@@ -5,7 +5,7 @@ variable "name" {
 
 variable "type" {
     type = string
-    description = "Policy type, must be one of (Config AuditEvent Network IAM Anomaly DLP)"
+    description = "Policy type, must be one of (config audit_event network iam data anomaly)"
 }
 
 variable "description" {
