@@ -6,3 +6,7 @@ terraform {
     }
   }
 }
+
+provider "prismacloud" {
+  json_config_file = var.json_config_file
+}

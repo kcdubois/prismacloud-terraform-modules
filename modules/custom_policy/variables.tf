@@ -46,3 +46,9 @@ variable "time_amount" {
     default = 24
     description = "Amount of unit of time, i.e 24 hours."
 }
+
+variable "json_config_file" {
+  type = "string"
+  default = ".prismacloud.json"
+  description = "Path to JSON configuration file for Prisma Cloud."
+}
