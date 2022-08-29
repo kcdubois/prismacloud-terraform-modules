@@ -12,7 +12,7 @@ resource "prismacloud_policy" "this" {
             "savedSearch": "true",
             "withIac": "false",
         }
-        rule_type = var.policy_type
+        rule_type = var.type
     }
 }
 
