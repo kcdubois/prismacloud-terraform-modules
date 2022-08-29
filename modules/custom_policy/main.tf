@@ -1,12 +1,12 @@
 resource "prismacloud_policy" "this" {
-    name = var.policy_name
-    policy_type = var.policy_type
+    name = var.name
+    policy_type = var.type
     severity = var.severity
     cloud_type = var.cloud_type
     enabled = var.enabled
     description = var.description
     rule {
-        name = var.policy_name
+        name = var.name
         criteria = prismacloud_saved_search.this.id
         parameters = {
             "savedSearch": "true",
@@ -17,7 +17,7 @@ resource "prismacloud_policy" "this" {
 }
 
 resource "prismacloud_saved_search" "this" {
-    name = var.policy_name
+    name = var.name
     description = "Made by terraform"
     search_id = prismacloud_rql_search.x.search_id
     query = prismacloud_rql_search.x.query
@@ -30,7 +30,7 @@ resource "prismacloud_saved_search" "this" {
 }
 
 resource "prismacloud_rql_search" "this" {
-    search_type = var.policy_type
+    search_type = var.type
     query = var.rql_query
 
     time_range {
