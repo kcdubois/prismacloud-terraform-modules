@@ -1,3 +1,14 @@
+locals {
+    policy_type = {
+        "config" = "Config"
+        "audit_event" = "AuditEvent"
+        "network" = "Network"
+        "iam" = "IAM"
+        "data" = "DLP"
+        "anomaly" = "Anomaly"
+    }
+}
+
 resource "prismacloud_policy" "this" {
     name = var.name
     policy_type = var.type
@@ -12,7 +23,7 @@ resource "prismacloud_policy" "this" {
             "savedSearch": "true",
             "withIac": "false",
         }
-        rule_type = var.type
+        rule_type = local.policy_type[var.type]
     }
 }
 
