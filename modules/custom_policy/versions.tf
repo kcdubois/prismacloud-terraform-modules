@@ -8,5 +8,4 @@ terraform {
 }
 
 provider "prismacloud" {
-  json_config_file = "~/.prismacloud/terraform.json"
 }
