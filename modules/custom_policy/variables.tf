@@ -10,7 +10,6 @@ variable "type" {
 
 variable "description" {
     type = string
-    default = var.name
     description = "value"
 }
 

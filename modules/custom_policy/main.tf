@@ -4,6 +4,7 @@ resource "prismacloud_policy" "this" {
     severity = var.severity
     cloud_type = var.cloud_type
     enabled = var.enabled
+    description = var.description
     rule {
         name = var.policy_name
         criteria = prismacloud_saved_search.this.id
