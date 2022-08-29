@@ -19,8 +19,8 @@ resource "prismacloud_policy" "this" {
 resource "prismacloud_saved_search" "this" {
     name = var.name
     description = "Made by terraform"
-    search_id = prismacloud_rql_search.x.search_id
-    query = prismacloud_rql_search.x.query
+    search_id = prismacloud_rql_search.this.search_id
+    query = prismacloud_rql_search.this.query
     time_range {
         relative {
             unit = prismacloud_rql_search.this.time_range.0.relative.0.unit
