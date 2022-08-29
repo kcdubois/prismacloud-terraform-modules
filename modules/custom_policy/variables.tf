@@ -48,7 +48,7 @@ variable "time_amount" {
 }
 
 variable "json_config_file" {
-  type = "string"
+  type = string
   default = ".prismacloud.json"
   description = "Path to JSON configuration file for Prisma Cloud."
 }
