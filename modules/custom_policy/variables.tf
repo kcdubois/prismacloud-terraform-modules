@@ -69,6 +69,6 @@ variable "json_config_file" {
 
 variable "labels" {
     type = set(string)
-    default = toset(["terraform"])
+    default = ["terraform"]
     description = "Set of unique labels to add to the policy"
 }
