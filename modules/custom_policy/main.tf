@@ -4,8 +4,6 @@ locals {
         "audit_event" = "AuditEvent"
         "network" = "Network"
         "iam" = "IAM"
-        "data" = "DLP"
-        "anomaly" = "Anomaly"
     }
 }
 
@@ -15,7 +13,7 @@ resource "prismacloud_policy" "this" {
     severity = var.severity
     cloud_type = var.cloud_type
     enabled = var.enabled
-    description = var.description
+    description = var.description ? var.description : var.name
     rule {
         name = var.name
         criteria = prismacloud_saved_search.this.id

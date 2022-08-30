@@ -5,23 +5,37 @@ variable "name" {
 
 variable "type" {
     type = string
-    description = "Policy type, must be one of (config audit_event network iam data anomaly)"
+    default = "config"
+    description = "Policy type, must be one of (config audit_event network iam)"
+    validation {
+        condition = contains(["config","audit_event", "network", "iam"], var.type)
+        error_message = "Must be one of the following: config audit_event network iam."
+    }
 }
 
 variable "description" {
     type = string
-    description = "value"
+    description = "Description of the policy and saved search."
 }
 
 variable "cloud_type" {
     type = string
     default = "all"
     description = "Cloud type of the policy."
+    validation {
+        condition = contains(["aws", "azure", "gcp", "alibaba_cloud", "all"], var.cloud_type)
+        error_message = "Must be one of the following: aws azure gcp alibaba_cloud all."
+    }
 }
+
 variable "severity" {
     type = string
     default = "low"
     description = "Severity of the policy, default to Low."
+    validation {
+        condition = contains(["low", "medium", "high"], var.severity)
+        error_message = "Severity must be one of the following: low medium high."
+    }
 }
 
 variable "enabled" {
@@ -51,4 +65,10 @@ variable "json_config_file" {
   type = string
   default = ".prismacloud.json"
   description = "Path to JSON configuration file for Prisma Cloud."
+}
+
+variable "labels" {
+    type = set(string)
+    default = set("terraform")
+    description = "Set of unique labels to add to the policy"
 }
