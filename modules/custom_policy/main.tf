@@ -5,6 +5,12 @@ locals {
         "network" = "Network"
         "iam" = "IAM"
     }
+    search_type = {
+        "config" = "config"
+        "audit_event" = "event"
+        "network" = "network"
+        "iam" = "iam"
+    }
 }
 
 resource "prismacloud_policy" "this" {
@@ -39,7 +45,7 @@ resource "prismacloud_saved_search" "this" {
 }
 
 resource "prismacloud_rql_search" "this" {
-    search_type = var.type
+    search_type = local.search_type[var.type]
     query = var.rql_query
 
     time_range {
